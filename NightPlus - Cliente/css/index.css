@@ -1,0 +1,101 @@
+/*Width: Ancho
+  Height: Alto
+
+  */
+
+
+/*Estilos del body*/
+body{
+	/*Quitar el margen*/
+	margin: 0;
+}
+
+
+
+
+/*Estilos del section cabecera*/
+#cabecera{
+ 	/*Color de fondo*/
+	background-color: #64B5F6;
+	/*Alto del section 100% del viewport*/
+	height: 100vh;
+}
+
+
+#contenedor-logo{
+	width: 7%;
+	float: left;
+}
+
+#contenedor-logo img{
+	width: 100%;
+}
+
+#cabecera-menu{
+	    display: flex;
+    justify-content: space-around;
+}
+
+#contenedor-menu{
+	width: 44%;
+	    height: 97px;
+    display: flex;
+    align-items: center;
+}
+
+/*Estilos del menu principal, cabecera*/
+#menu-principal{
+	/*Quitamos los puntos de la lista*/
+	list-style: none;
+	display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#menu-principal li a{
+	    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+
+}
+
+
+/*Aqui finaliza los estilos de los componentes de la cabecera*/
+
+
+
+/*Aqui empiezan ls estilos de los componentes de servicios*/
+
+#servicios{
+	background-color: #ccc;
+	height: 100vh;
+}
+
+#cuerpo-cabecera{
+	    height: 74vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 7%;
+}
+
+#texto-cabecera{
+	color: #fff;
+    font-size: 31px;
+    font-family: sans-serif;
+}
+
+#boton-cabecera{
+	width: 40%;
+	text-align: center;
+}
+#boton-cabecera button{
+	    width: 30%;
+    height: 48px;
+    background: #ccc;
+    border: 0;
+    color: #fff;
+}
+
+/*Aqui finaliza los estilos de los componentes de los servicios*/
