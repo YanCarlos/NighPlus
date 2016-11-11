@@ -1,0 +1,170 @@
+var candadoAbiertoFin =         false;
+var candadoWrapperFin =         false;
+var decisionesPequenoFin =      false;
+var decisionesWrapperTortaFin = false;
+var relojHorarioFin =           false;
+var relojMinuteroFin =          false;
+var flechaRelojFin =            false;
+
+
+
+//control animación palito del candado
+jQuery('#home-candado img:first').appear();
+jQuery("#home-candado img:first").on("appear",function(event, $all_appeared_elements) {
+    'use strict';
+    
+    if(relojHorarioFin){
+        jQuery(this).removeClass("icon-transition-candado");
+        jQuery(this).addClass("icon-transition");
+        jQuery(this).addClass("candado");
+    }else{
+        !candadoAbiertoFin? jQuery(this).addClass("candado"):'';
+    }  
+});
+jQuery("#home-candado img:first").on("disappear",function(event, $all_appeared_elements) {
+    !candadoAbiertoFin? jQuery(this).removeClass('candado'):'';
+});
+jQuery("#home-candado img:first").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("candado")? candadoAbiertoFin = true: candadoAbiertoFin = false;
+});
+
+
+
+
+
+//control animación del candado completo
+jQuery('#home-candado div:first').appear();
+jQuery("#home-candado div:first").on("appear",function(event, $all_appeared_elements) {
+    !candadoWrapperFin? jQuery(this).addClass("candado-y"):'';
+    
+    if(relojHorarioFin){
+        jQuery(this).removeClass("wrapper-candado");
+        jQuery(this).addClass("wrapper-candado-no-delay");
+        jQuery(this).addClass("candado-y");
+    }else{
+        !candadoAbiertoFin? jQuery(this).addClass("candado-y"):'';
+    }  
+});
+jQuery("#home-candado div:first").on("disappear",function(event, $all_appeared_elements) {
+    !candadoWrapperFin? jQuery(this).removeClass('candado-y'):'';  
+});
+jQuery("#home-candado div:first").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("candado-y")? candadoWrapperFin = true: candadoWrapperFin = false;
+});
+
+
+
+
+
+//control animación de la flecha del reloj
+jQuery('#home-reloj div:first img:first').appear();
+jQuery("#home-reloj div:first img:first").on("appear",function(event, $all_appeared_elements) {
+    if(decisionesWrapperTortaFin){
+        jQuery(this).removeClass("icon-transition-reloj-flecha");
+        jQuery(this).addClass("icon-transition");
+        jQuery(this).addClass("rotate-360");
+    }else{
+        !flechaRelojFin? jQuery(this).addClass("rotate-360"):'';
+    }    
+});
+jQuery("#home-reloj div:first img:first").on("disappear",function(event, $all_appeared_elements) {
+    !flechaRelojFin? jQuery(this).removeClass("rotate-360"):'';
+});
+jQuery("#home-reloj div:first img:first").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("rotate-360")? flechaRelojFin = true: flechaRelojFin = false;
+});
+
+
+
+
+
+//control animación del minutero del reloj
+jQuery('#home-reloj-minutero img').appear();
+jQuery("#home-reloj-minutero img").on("appear",function(event, $all_appeared_elements) {  
+        if(decisionesWrapperTortaFin){
+        jQuery(this).removeClass("icon-transition-minutero");
+        jQuery(this).addClass("icon-transition-minutero-no-delay");
+        jQuery(this).addClass("rotate-585");
+    }else{
+        !relojMinuteroFin? jQuery(this).addClass("rotate-585"):'';
+    } 
+});
+jQuery("#home-reloj-minutero img").on("disappear",function(event, $all_appeared_elements) {
+    !relojMinuteroFin? jQuery(this).removeClass("rotate-585"):'';
+});
+jQuery("#home-reloj-minutero img").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("rotate-585")? relojMinuteroFin = true: relojMinuteroFin = false;
+});
+
+
+
+
+
+//control animación del horario del reloj
+jQuery('#home-reloj-horario img').appear();
+jQuery("#home-reloj-horario img").on("appear",function(event, $all_appeared_elements) {    
+    if(decisionesWrapperTortaFin){
+        jQuery(this).removeClass("icon-transition-horario");
+        jQuery(this).addClass("icon-transition-horario-no-delay");
+        jQuery(this).addClass("rotate-360");
+    }else{
+        !relojHorarioFin? jQuery(this).addClass("rotate-360"):'';
+    } 
+});
+jQuery("#home-reloj-horario img").on("disappear",function(event, $all_appeared_elements) {
+    !relojHorarioFin? jQuery(this).removeClass("rotate-360"):'';
+});
+jQuery("#home-reloj-horario img").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("rotate-360")? relojHorarioFin = true: relojHorarioFin = false;
+});
+
+
+
+
+
+//control animación del cuarto de torta
+jQuery('#home-decisiones-pequeno img').appear();
+jQuery("#home-decisiones-pequeno img").on("appear",function(event, $all_appeared_elements) {
+    !decisionesPequenoFin? jQuery(this).addClass("home-decisiones-translateXY"):'';
+});
+jQuery("#home-decisiones-pequeno img").on("disappear",function(event, $all_appeared_elements) {
+    !decisionesPequenoFin? jQuery(this).removeClass("home-decisiones-translateXY"):'';
+});
+jQuery("#home-decisiones-pequeno img").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("home-decisiones-translateXY")? decisionesPequenoFin = true: decisionesPequenoFin = false;
+});
+
+
+var half = parseInt(jQuery(".modalVideoCenter").height()) / 2;
+
+jQuery('.modalVideoCenter').css('margin-top',-half);
+
+
+
+function modalVideo(){
+    jQuery('.modalVideoContainer').css('z-index',100).fadeTo( "fast" , 1, function() {
+        jQuery('.wistia_responsive_wrapper').show();
+        jQuery("button[id*='wistia_smallPlayButton']").click();    
+  });
+}
+function closeModal(){
+    jQuery('.modalVideoContainer').fadeTo( "fast" , 0, function() {
+         jQuery('.wistia_responsive_wrapper').hide();
+  }).css('z-index',-1);
+}
+
+
+
+//control animación de la torta completa
+jQuery('#home-decisiones .wrapper-torta').appear();
+jQuery("#home-decisiones .wrapper-torta").on("appear",function(event, $all_appeared_elements) {
+    !decisionesWrapperTortaFin? jQuery(this).addClass("rotate-360"):'';
+});
+jQuery("#home-decisiones .wrapper-torta").on("disappear",function(event, $all_appeared_elements) {
+    !decisionesWrapperTortaFin? jQuery(this).removeClass("rotate-360"):'';
+});
+jQuery("#home-decisiones .wrapper-torta").on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
+    jQuery(this).hasClass("rotate-360")? decisionesWrapperTortaFin = true: decisionesWrapperTortaFin = false;
+});
+
+

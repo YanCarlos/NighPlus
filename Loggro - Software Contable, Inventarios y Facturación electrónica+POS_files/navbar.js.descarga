@@ -1,0 +1,35 @@
+jQuery(document).ready(function(){    
+    
+    var checkPosition = true;
+    var location = window.location.href.indexOf(".com") != -1? '/' : '';
+    var loggroInverse = location.concat('images/logo-loggro-home.png');
+    var loggro = location.concat('images/logo-loggro-home.png');
+    
+    jQuery('#t3-header').addClass('navbar-default-adition site-animation');
+    jQuery('.logo-img').addClass('site-animation');
+    jQuery('.logo-img-sm').addClass('site-animation');
+    
+    setNavBar();
+    jQuery(window).on( "scroll", function(){                        
+        setNavBar();
+    });
+      
+    function setNavBar(){
+    'use strict';
+    
+        if(jQuery(window).scrollTop() === 0){
+                jQuery('#t3-header').removeClass('nav-fixed');
+                jQuery('.logo-img')[0].setAttribute('src', loggroInverse);
+                jQuery('.logo-img').removeClass('image-animation');
+                checkPosition = true;
+        }            
+
+        if(jQuery(window).scrollTop() > 0 && checkPosition){
+                jQuery('#t3-header').addClass('nav-fixed');                
+                jQuery('.logo-img')[0].setAttribute('src', loggro);
+                jQuery('.logo-img').addClass('image-animation');
+                checkPosition = false;
+        }
+    }    
+});
+

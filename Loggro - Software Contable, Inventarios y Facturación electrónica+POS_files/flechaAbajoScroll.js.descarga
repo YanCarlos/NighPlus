@@ -1,0 +1,13 @@
+/*Script para hacer scroll cuando se da click en la flecha del Inicio*/
+jQuery(document).ready(function() {
+    'use strict';
+    jQuery("#goDownArrow").on("click", function( e ) {
+
+        e.preventDefault();
+
+        jQuery("body, html").animate({ 
+            scrollTop: jQuery("h1:first").offset().top - jQuery('#t3-header').outerHeight()
+        }, 900);
+
+    });
+});

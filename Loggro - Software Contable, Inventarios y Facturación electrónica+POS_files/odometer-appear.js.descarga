@@ -1,0 +1,95 @@
+var aniosVisible = colaboradoresVisible = clientesVisible = aniosFinished = clientsFinished = colaboradoresFinished = false;
+
+
+jQuery(".container-anios").appear();
+jQuery(".container-anios").on("appear", function(event, $all_appeared_elements){
+    if(!aniosFinished){
+        setTimeout(function(){
+            jQuery(".anios-initial").addClass("hide");
+            jQuery('.anios').removeClass("hide");
+            jQuery(".anios").html(30);
+        }, 1000);
+    }
+    aniosVisible = true;
+});
+
+jQuery(".container-clients").appear();
+jQuery(".container-clients").on("appear startClients", function(event, $all_appeared_elements){
+    if(!clientsFinished && aniosFinished){
+        setTimeout(function(){
+            jQuery(".clientes-initial").addClass("hide");
+            jQuery('.clientes').removeClass("hide");
+            jQuery(".clientes").html(1000);
+        }, 1000);
+    }
+    
+    clientesVisible = true;
+});
+
+jQuery(".container-colaboradores").appear();
+jQuery(".container-colaboradores").on("appear startColaboradores", function(event, $all_appeared_elements){
+    if(!colaboradoresFinished && clientsFinished){
+        setTimeout(function(){
+            jQuery(".colaboradores-initial").addClass("hide");
+            jQuery('.colaboradores').removeClass("hide");
+            jQuery(".colaboradores").html(500);
+        }, 1000);
+    }
+    
+    colaboradoresVisible = true;
+});
+
+
+jQuery(".container-anios").on("disappear", function(){
+
+    aniosVisible = false;
+    if(!aniosFinished){
+            jQuery(".anios-initial").removeClass("hide");
+            jQuery('.anios').addClass("hide");
+            jQuery(".anios").html(0);
+    }
+});
+
+jQuery(".container-clients").on("disappear", function(){
+
+    clientesVisible = false;
+    if(!clientsFinished){
+            jQuery(".clientes-initial").removeClass("hide");
+            jQuery('.clientes').addClass("hide");
+            jQuery(".clientes").html(0);
+    }
+});
+
+jQuery(".container-colaboradores").on("disappear", function(){
+
+    colaboradoresVisible = false;
+    if(!colaboradoresFinished){
+            jQuery(".colaboradores-initial").removeClass("hide");
+            jQuery('.colaboradores').addClass("hide");
+            jQuery(".colaboradores").html(0);
+    }
+});
+
+
+
+jQuery(".anios").on("odometerdone", function(){
+    if(aniosVisible){
+        aniosFinished = true;
+        jQuery(".container-clients").trigger("startClients");
+    }else{
+        
+    }  
+});
+
+jQuery(".clientes").on("odometerdone", function(){   
+    if(clientesVisible){
+        clientsFinished = true;
+        jQuery(".container-colaboradores").trigger("startColaboradores");
+    }    
+});
+
+jQuery(".colaboradores").on("odometerdone", function(){    
+    if(colaboradoresVisible){
+        colaboradoresFinished = true;
+    }
+});

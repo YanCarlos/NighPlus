@@ -1,0 +1,21 @@
+jQuery(document).on("ready", function(){
+    'use strict';
+    jQuery("#jsn_form_1 .select2-container a span").text().toLowerCase().indexOf("tamaño")!=-1?
+        jQuery("#jsn_form_1 .select2-container a.select2-choice span").addClass("gray-text"):'';
+    jQuery("#jsn_form_1").on("change", function(){
+        if(jQuery("#jsn_form_1 .select2-container a span").text().toLowerCase().indexOf("tamaño")!=-1){
+            jQuery("#jsn_form_1 .select2-container a.select2-choice span").addClass("gray-text");
+        }else{
+            jQuery("#jsn_form_1 .select2-container a.select2-choice span").addClass("black-text");
+        }
+    });
+    
+    
+    //controla no esconder el foco detrás del menú en el formulario
+    jQuery("#jsn_form_1 input").focus(function(){
+        if(jQuery(this).offset().top < (jQuery(window).scrollTop()+jQuery("#t3-header").outerHeight())) {
+            jQuery(window).scrollTop(jQuery(window).scrollTop()-jQuery("#t3-header").outerHeight());
+            
+        }
+    });
+});
